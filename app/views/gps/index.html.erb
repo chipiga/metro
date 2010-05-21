@@ -20,6 +20,14 @@
     #map { width:500px; height:500px; }
 </style>
 
+<div>
+	<% @red_stations.each do |stations| %>
+		<% if stations.next_station %>
+			<p><%= stations.name %> - <%= stations.next_station.name %> - <%= stations.distance_to_next %></p>	
+		<% end %>
+	<% end %>
+</div>
+
 </head>
 
 <body>
