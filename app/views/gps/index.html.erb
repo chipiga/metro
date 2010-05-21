@@ -12,7 +12,13 @@
     $(document).ready(function(){
 	    var map = new GMap2(document.getElementById('map'));
 	    var kuiv = new GLatLng(50.4511102241713,30.522465705871582);
-	    map.setCenter(kuiv, 12);
+	    map.setCenter(kuiv, 11);
+		<% @red_stations.each do |station| %>
+			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
+		        <%= station.lng %>);
+		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
+		    map.addOverlay(marker_<%= station.id %>);	
+		<% end %>
 	});
 </script>
 
