@@ -19,6 +19,18 @@
 		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
 		    map.addOverlay(marker_<%= station.id %>);	
 		<% end %>
+		<% @green_stations.each do |station| %>
+			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
+		        <%= station.lng %>);
+		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
+		    map.addOverlay(marker_<%= station.id %>);	
+		<% end %>
+		<% @blue_stations.each do |station| %>
+			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
+		        <%= station.lng %>);
+		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
+		    map.addOverlay(marker_<%= station.id %>);	
+		<% end %>
 	});
 </script>
 
