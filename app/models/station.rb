@@ -1,6 +1,8 @@
 class Station < ActiveRecord::Base
   has_one :connected, :foreign_key => 'connected_to', :primary_key => 'identifier', :class_name => 'Station'
   
+  named_scope :with_color, lambda {|color | {:conditions => {:color => color}}}
+  
   def distance_to_next
     if next_station 
       Station.distance(self,next_station) 
