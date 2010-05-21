@@ -12,30 +12,40 @@
     $(document).ready(function(){
 	    var map = new GMap2(document.getElementById('map'));
 	    var kuiv = new GLatLng(50.4511102241713,30.522465705871582);
-	    map.setCenter(kuiv, 11);
+	    map.setCenter(kuiv, 12);
+		var i = 0;
+		var markers = [];
 		<% @red_stations.each do |station| %>
 			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
 		        <%= station.lng %>);
 		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
-		    map.addOverlay(marker_<%= station.id %>);	
+		    map.addOverlay(marker_<%= station.id %>);
+			markers[i++] = marker_<%= station.id %>;
 		<% end %>
 		<% @green_stations.each do |station| %>
 			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
 		        <%= station.lng %>);
 		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
-		    map.addOverlay(marker_<%= station.id %>);	
+		    map.addOverlay(marker_<%= station.id %>);
+			markers[i++] = marker_<%= station.id %>;	
 		<% end %>
 		<% @blue_stations.each do |station| %>
 			var point_<%= station.id %> = new GLatLng(<%= station.lat %>,
 		        <%= station.lng %>);
 		    marker_<%= station.id %> = new GMarker(point_<%= station.id %>);
-		    map.addOverlay(marker_<%= station.id %>);	
+		    map.addOverlay(marker_<%= station.id %>);
+			markers[i++] = marker_<%= station.id %>;	
 		<% end %>
+		$(markers).each(function(i,marker){
+		    GEvent.addListener(marker, "click", function(){
+		        alert('coming sooon');
+		    });
+		});
 	});
 </script>
 
 <style media="screen" type="text/css">
-    #map { width:500px; height:500px; }
+    #map { width:800px; height:800px; }
 </style>
 
 <div>
