@@ -21,9 +21,25 @@
 </style>
 
 <div>
+  <h1>Расстояние между станциями</h1>
+  <h2>Краснная ветка</h2>
 	<% @red_stations.each do |stations| %>
 		<% if stations.next_station %>
-			<p><%= stations.name %> - <%= stations.next_station.name %> - <%= stations.distance_to_next %></p>	
+			<p><%= stations.name %> - <%= stations.next_station.name %> - <%= distance(stations.distance_to_next) %></p>	
+		<% end %>
+	<% end %>
+
+  <h2>Зеленая ветка</h2>
+	<% @green_stations.each do |stations| %>
+		<% if stations.next_station %>
+			<p><%= stations.name %> - <%= stations.next_station.name %> - <%= distance(stations.distance_to_next) %></p>	
+		<% end %>
+	<% end %>
+
+  <h2>Синияя ветка</h2>
+	<% @blue_stations.each do |stations| %>
+		<% if stations.next_station %>
+			<p><%= stations.name %> - <%= stations.next_station.name %> - <%= distance(stations.distance_to_next) %></p>	
 		<% end %>
 	<% end %>
 </div>
